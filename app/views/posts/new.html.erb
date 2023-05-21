@@ -1,0 +1,36 @@
+<div class="page_title">
+  <p class="tilte">予定の新規追加</p>
+</div>
+
+<div class="container">
+  <%= form_with model: @post do |f| %>
+    <div class="form-group">
+      <%= f.label :title, "タイトル"%>
+      <%= f.text_field :title, class: "form-control" ,placeholder: "タイトル"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :start_date, "開始日" %>
+      <div>
+      <%= f.text_field :start_date %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_date, "終了日" %>
+      <div>
+      <%= f.text_field :end_date %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :introduction ,"スケジュールメモ" %>
+      <%= f.text_area :introduction, class: "form-control" ,placeholder: "メモを入力" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "保存", class:"btn btn-outline-primary"%>
+      <%= link_to "キャンセル", :posts, class:"btn btn-outline-danger" %>
+    </div>
+  <% end %>
+</div>

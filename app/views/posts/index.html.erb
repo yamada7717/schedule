@@ -1,3 +1,67 @@
-    <button class="btn btn-primary Button Button--primary">
-      新規追加
-    </button>
+<header>
+  <nav class="navbar Navbar">
+    <div class="container-fluid">
+      <p class="text-center Navbar__text">
+        スケジュール管理アプリ
+      </p>
+    </div>
+  </nav>
+</header>
+
+<div class="container">
+  <div>
+    <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+    <% end %>
+  </div>
+
+  <div class="PageTitle">
+    <h2 class="PageTitle__text">予定一覧</h2>
+    <%= link_to "新規登録", :new_post, class:"btn btn-primary Button Button--primary" %>
+  </div>
+
+  <div class="table-responsive TableResponsive">
+    <table class="table Table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>タイトル</th>
+          <th>開始日</th>
+          <th>終了日</th>
+          <th>終日</th>
+          <th>更新日時</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%=post.id %></td>
+          <td><%=post.title %></td>
+          <td><%=post.start_date %></td>
+          <td><%=post.end_date %></td>
+          <td></td>
+          <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+          <td>
+          <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="card Footer">
+    <div class="card-body FooterBody">
+      <p class="FooterBody__count">
+        予定合計&nbsp;&nbsp;<span>6</span>件
+      </p>
+      <p class="FooterBody__datetime">
+        本日の日付&nbsp;2023/05/16
+      </p>
+    </div>
+  </footer>
+</div>
