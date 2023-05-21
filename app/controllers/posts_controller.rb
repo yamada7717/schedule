@@ -13,6 +13,7 @@ class PostsController < ApplicationController
       :title,
       :start_date,
       :end_date,
+      :all_day,
       :introduction
       ))
     if @post.save

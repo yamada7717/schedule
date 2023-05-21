@@ -43,7 +43,11 @@
           <td><%=post.title %></td>
           <td><%=post.start_date %></td>
           <td><%=post.end_date %></td>
-          <td></td>
+          <td>
+          <% if post.all_day == true %>
+          <strong>⚪︎</strong>
+          <% end %>
+          </td>
           <td><%= post.updated_at.to_s(:datetime_jp) %></td>
           <td>
           <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
