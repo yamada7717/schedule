@@ -1,15 +1,7 @@
-<header>
-  <nav class="navbar Navbar">
-    <div class="container-fluid">
-      <p class="text-center Navbar__text">
-        スケジュール管理アプリ
-      </p>
-    </div>
-  </nav>
-</header>
+<%= render "shared/header"%>
 
 <div class="container">
-  <div>
+  <div class="">
     <% if flash[:notice] %>
     <p class="notice"><%= flash[:notice] %></p>
     <% end %>
@@ -41,14 +33,16 @@
         <tr>
           <td><%=post.id %></td>
           <td><%=post.title %></td>
-          <td><%=post.start_date %></td>
-          <td><%=post.end_date %></td>
+          <td><%=post.start_date&.strftime('%Y/%m/%d') %></td>
+          <td><%=post.end_date&.strftime('%Y/%m/%d') %></td>
           <td>
           <% if post.all_day == true %>
           <strong>⚪︎</strong>
           <% end %>
           </td>
           <td><%= post.updated_at.to_s(:datetime_jp) %></td>
+          <td><%= link_to "参照", post %></td>
+          <td><%= link_to "編集", [:edit, post] %></td>
           <td>
           <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
           </td>
