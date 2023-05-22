@@ -1,31 +1,35 @@
 <%= render "shared/header"%>
 
-
 <div class="container">
   <div class="form_wrapper">
+    <div class="flash">
+      <% if flash[:notice] %>
+      <p class="notice"><%= flash[:notice] %></p>
+      <% end %>
+    </div>
     <div class="page_title">
       <p class="tilte">予定の新規追加</p>
     </div>
     <%= form_with model: @post do |f| %>
       <div>
-        <%= f.label :title, "タイトル"%>
+        <%= f.label :title, "タイトル"%>&nbsp;<span>※</span>
         <%= f.text_field :title, class: "form-control" ,placeholder: "タイトル"  %>
       </div>
 
       <div>
-        <%= f.label :start_date, "開始日" %>
+        <%= f.label :start_date, "開始日" %>&nbsp;<span>※</span>
         <div>
         <%= f.date_field :start_date %>
         </div>
       </div>
 
       <div>
-        <%= f.label :end_date, "終了日" %>
+        <%= f.label :end_date, "終了日" %>&nbsp;<span>※</span>
         <div>
         <%= f.date_field :end_date %>
         </div>
       </div>
-      <div>
+      <div class="mt-2">
         <%= f.label :all_day, "終日" %>
         <div>
         <%= f.check_box :all_day %>

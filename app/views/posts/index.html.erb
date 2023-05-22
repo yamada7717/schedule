@@ -41,12 +41,33 @@
           <td><%= link_to "詳細", post %></td>
           <td><%= link_to "編集", [:edit, post] %></td>
           <td>
-          <%= link_to "削除", post, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          <%= link_to "削除", "#", data: { toggle: "modal", target: "#deleteModal#{post.id}" } %>
           </td>
         </tr>
       <% end %>
       </tbody>
     </table>
+    <% @posts.each do |post| %>
+      <div class="modal fade" id="deleteModal<%=post.id%>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <p class="modal-title" id="deleteModalLabel">削除の確認</p>
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                本当に削除しますか？
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" data-dismiss="modal">キャンセル</button>
+                <%= link_to "削除", post, method: :delete, class: "btn btn-outline-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
 
   <footer class="card Footer">

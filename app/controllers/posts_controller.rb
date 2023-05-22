@@ -19,6 +19,7 @@ class PostsController < ApplicationController
         flash[:notice] = "スケジュールの予約が完了しました"
         redirect_to :posts
     else
+      flash[:notice] = "予約情報の確認をし再度お試しください"
       render :new
     end
   end
