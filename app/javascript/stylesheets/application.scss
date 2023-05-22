@@ -1,1 +1,25 @@
 @import '~bootstrap/scss/bootstrap';
+
+// header
+body {
+  margin: 0;
+}
+
+.nav_bar {
+  background-color: #1c1d3b;
+  height: 50px;
+  margin-bottom: 24px;
+}
+
+.header_title {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 50px;
+  margin: 0 auto;
+}
+
+.form_wrapper {
+  max-width: 640px;
+  margin: auto;
+}
