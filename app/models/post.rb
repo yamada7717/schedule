@@ -9,9 +9,5 @@ class Post < ApplicationRecord
 
   def end_date_after_start_date
     return if end_date.blank? || start_date.blank?
-
-    if end_date < start_date
-      errors.add(:end_date, "は開始日以降の日付を選択してください")
-    end
   end
 end
